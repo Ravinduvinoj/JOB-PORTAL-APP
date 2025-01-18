@@ -7,13 +7,14 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
+          "standalone": false,
+          "style": "scss"
         },
         "@schematics/angular:pipe": {
           "standalone": false
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -35,9 +36,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
+            "allowedCommonJsDependencies": [
+              "apexcharts"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -49,7 +53,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "4mb",
                   "maximumError": "1mb"
                 },
                 {
@@ -93,21 +97,25 @@
               "zone.js",
               "zone.js/testing"
             ],
+            "inlineStyleLanguage": "scss",
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/tailwindcss/tailwind.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "4565acae-1d5e-4201-9797-0b281ebfb57f"
+    "analytics": false
   }
 }
