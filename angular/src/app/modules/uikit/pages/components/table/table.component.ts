@@ -10,12 +10,55 @@ import { User } from '../../model/user.model';
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
+  selectAll: boolean = false;
   users = signal<User[]>([]);
+  selectedUsers = new Map<number, boolean>();
 
   constructor(
     private http: HttpClient,
     private filterService: TableFilterService
   ) {}
+
+  ngOnInit() {
+    this.fetchUsers();
+  }
+
+  public toggle(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.selectAll = isChecked;
+    this.selectAllCheckboxes(isChecked);
+  }
+
+  toggleSelectAll(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.selectAll = isChecked;
+  }
+
+  updateSelectAllState() {
+    const allSelected = this.users().every((user) =>
+      this.selectedUsers.get(user.id)
+    );
+
+    this.selectAll = allSelected;
+    // Handle any indeterminate states if necessary
+  }
+
+  toggleUserSelection(userId: number, event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.selectedUsers.set(userId, isChecked);
+
+    // Update `selectAll` state
+    this.updateSelectAllState();
+  }
+
+  selectAllCheckboxes(isChecked: boolean) {
+    const checkboxes = document.querySelectorAll(
+      'input[type="checkbox"][data-datatable-check]'
+    );
+    checkboxes.forEach((checkbox) => {
+      (checkbox as HTMLInputElement).checked = isChecked;
+    });
+  }
 
   private fetchUsers() {
     this.http.get<User[]>('api/users').subscribe(
@@ -27,12 +70,19 @@ export class TableComponent implements OnInit {
     );
   }
 
-  public toggleUsers(checked: boolean) {
-    this.users.update((users) => {
-      return users.map((user) => {
-        return { ...user, selected: checked };
-      });
-    });
+  onSearchChange(value: Event) {
+    const input = value.target as HTMLInputElement;
+    this.filterService.searchField.set(input.value);
+  }
+
+  onStatusChange(value: Event) {
+    const selectElement = value.target as HTMLSelectElement;
+    this.filterService.statusField.set(selectElement.value);
+  }
+
+  onOrderChange(value: Event) {
+    const selectElement = value.target as HTMLSelectElement;
+    this.filterService.orderField.set(selectElement.value);
   }
 
   private handleRequestError(error: any) {
@@ -79,8 +129,4 @@ export class TableComponent implements OnInit {
         return 0;
       });
   });
-
-  ngOnInit() {
-    this.fetchUsers();
-  }
 }

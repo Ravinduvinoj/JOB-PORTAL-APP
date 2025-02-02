@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Nft } from '../../../models/nft';
 
 @Component({
@@ -7,6 +7,7 @@ import { Nft } from '../../../models/nft';
   styleUrl: './nft-auctions-table.component.css'
 })
 export class NftAuctionsTableComponent implements OnInit{
+
   public activeAuction: Nft[] = [];
 
   constructor() {
@@ -47,30 +48,30 @@ export class NftAuctionsTableComponent implements OnInit{
         price: 1602.77,
         instant_price: 2.9,
       },
-      {
-        id: 1346792,
-        title: 'Only by Shvembldr',
-        creator: 'Jenny Wilson',
-        image:
-          'https://lh3.googleusercontent.com/ujFwzDIXN64mJAHZwZ0OgNupowe5jlJPmV8OIrgSDjUAeb3SZRuhsuyPKAw6S2TkUknZvErVVKbzD-rEcs-augb6_LzUE5NVtPxj_w=h500',
-        avatar: 'https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-13.jpg',
-        ending_in: '1h 05m 00s',
-        last_bid: 2.0,
-        price: 1438.17,
-        instant_price: 2.1,
-      },
-      {
-        id: 1346792,
-        title: 'Crypto Coven',
-        creator: 'Jenny Wilson',
-        image:
-          'https://lh3.googleusercontent.com/pwjA4CWS9nto8fCis6JzlWwzQgtHUvLlUWcd501LsGQoVUPL5euwhir-2fjPmsJLJ_ovJ7flH_OgDEaALeZrhSXv8Puq85-lZYWuqto=h500',
-        avatar: 'https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-13.jpg',
-        ending_in: '1h 05m 00s',
-        last_bid: 0.8,
-        price: 1278.38,
-        instant_price: 0.35,
-      },
+      // {
+      //   id: 1346792,
+      //   title: 'Only by Shvembldr',
+      //   creator: 'Jenny Wilson',
+      //   image:
+      //     'https://lh3.googleusercontent.com/ujFwzDIXN64mJAHZwZ0OgNupowe5jlJPmV8OIrgSDjUAeb3SZRuhsuyPKAw6S2TkUknZvErVVKbzD-rEcs-augb6_LzUE5NVtPxj_w=h500',
+      //   avatar: 'https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-13.jpg',
+      //   ending_in: '1h 05m 00s',
+      //   last_bid: 2.0,
+      //   price: 1438.17,
+      //   instant_price: 2.1,
+      // },
+      // {
+      //   id: 1346792,
+      //   title: 'Crypto Coven',
+      //   creator: 'Jenny Wilson',
+      //   image:
+      //     'https://lh3.googleusercontent.com/pwjA4CWS9nto8fCis6JzlWwzQgtHUvLlUWcd501LsGQoVUPL5euwhir-2fjPmsJLJ_ovJ7flH_OgDEaALeZrhSXv8Puq85-lZYWuqto=h500',
+      //   avatar: 'https://preview.keenthemes.com/metronic8/demo1/assets/media/avatars/300-13.jpg',
+      //   ending_in: '1h 05m 00s',
+      //   last_bid: 0.8,
+      //   price: 1278.38,
+      //   instant_price: 0.35,
+      // },
     ];
   }
 
