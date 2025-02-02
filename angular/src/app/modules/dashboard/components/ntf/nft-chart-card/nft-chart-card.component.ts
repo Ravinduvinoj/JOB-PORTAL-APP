@@ -6,9 +6,9 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { ThemeService } from '../../../../../core/services/theme.service';
-import { ChartOptions } from '../../../../../shared/models/chart-options';
 import { isPlatformBrowser } from '@angular/common';
+import { ChartOptions } from '../../../../../shared/models/chart-options';
+import { ThemeService } from '../../../../../core/services/theme.service';
 
 @Component({
   selector: '[nft-chart-card]',
@@ -54,22 +54,13 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
     }
 
     this.chartOptions = {
-      series: [
-        {
-          name: 'Etherium',
-          data: data,
-        },
-      ],
+      series: [{ name: 'Etherium', data: data }],
       chart: {
         fontFamily: 'inherit',
         type: 'area',
         height: 150,
-        toolbar: {
-          show: false,
-        },
-        sparkline: {
-          enabled: true,
-        },
+        toolbar: { show: false },
+        sparkline: { enabled: true },
       },
       dataLabels: {
         enabled: false,
@@ -121,7 +112,9 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       effect(() => {
         /** change chart theme */
-        let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+        let primaryColor = getComputedStyle(
+          document.documentElement
+        ).getPropertyValue('--primary');
         primaryColor = this.HSLToHex(primaryColor);
         this.chartOptions.tooltip = {
           theme: this.themeService.theme().mode,
@@ -151,7 +144,9 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
       const color = hDecimal - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
 
       // Convert to Hex and prefix with "0" if required
-      return Math.round(255 * color).toString(16).padStart(2, '0');
+      return Math.round(255 * color)
+        .toString(16)
+        .padStart(2, '0');
     };
     return `#${f(0)}${f(8)}${f(4)}`;
   }

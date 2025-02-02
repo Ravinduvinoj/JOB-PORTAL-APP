@@ -8,12 +8,45 @@ export class Menu {
       items: [
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Dashboard',
-          route: '/dashboard',
+          label: 'Admin Dashboard',
+          route: '/admin/dashboard',
+          permission: 'admin',
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Company Dashboard',
+          route: '/company/dashboard',
+          permission: 'company',
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/download.svg',
+          label: 'Advertisments',
+          route: '/admin/advertiesment',
+          permission: 'admin',
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/cube.svg',
+          label: 'Accounts',
+          route: '/admin',
           children: [
-            { label: 'Nfts', route: '/dashboard/nfts' },
-            // { label: 'Podcast', route: '/dashboard/podcast' },
+            { label: 'Company', route: 'accounts/company' },
+            { label: 'User', route: 'accounts/users' },
           ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/cube.svg',
+          label: 'Job Categories',
+          route: '/admin',
+          children: [
+            { label: 'Category', route: 'job/category' },
+            { label: 'Position', route: 'job/position' },
+          ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/cube.svg',
+          label: 'Admin',
+          route: '',
+          children: [{ label: 'Table', route: '/components/table' }],
         },
         {
           icon: 'assets/icons/heroicons/outline/lock-closed.svg',
@@ -35,12 +68,6 @@ export class Menu {
             { label: '404', route: '/errors/404' },
             { label: '500', route: '/errors/500' },
           ],
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/cube.svg',
-          label: 'Components',
-          route: '/components',
-          children: [{ label: 'Table', route: '/components/table' }],
         },
       ],
     },

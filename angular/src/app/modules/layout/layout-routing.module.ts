@@ -4,7 +4,12 @@ import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'admin',
+    component: LayoutComponent,
+    loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'company',
     component: LayoutComponent,
     loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
@@ -13,7 +18,7 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('../uikit/uikit.module').then((m) => m.UikitModule),
   },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'company', pathMatch: 'full' },
   { path: '**', redirectTo: 'error/404' },
 ];
 
