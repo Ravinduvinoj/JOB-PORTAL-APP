@@ -10,7 +10,7 @@
           (click)="toggleSidebar()"
           class="flex cursor-pointer items-center justify-center rounded bg-primary p-2 focus:outline-none focus:ring-1"
         >
-          <svg-icon src="assets/icons/logo.svg"> </svg-icon>
+        <img src="../../../../../assets/icons/logo.svg" alt="">
         </a>
         <b class="ml-1 pl-2 text-sm font-bold text-foreground">
           Job Portal
@@ -22,8 +22,7 @@
         class="absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded text-muted-foreground/50 transition-all duration-200 focus:outline-none hover:text-muted-foreground"
         [ngClass]="{ 'rotate-180': !menuService.showSideBar }"
       >
-        <svg-icon src="assets/icons/heroicons/solid/chevron-double-left.svg">
-        </svg-icon>
+      <img src="../../../../../assets/icons/heroicons/solid/chevron-double-left.svg" alt="">
       </button>
     </div>
 

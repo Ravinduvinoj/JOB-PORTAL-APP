@@ -7,7 +7,6 @@ import {
   HttpClientModule,
   provideHttpClient,
   withFetch,
-  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +14,6 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { ErrorComponent } from './modules/error/error.component';
 import { LayoutComponent } from './modules/layout/layout.component';
 import { UikitComponent } from './modules/uikit/uikit.component';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BottomNavbarComponent } from './modules/layout/components/bottom-navbar/bottom-navbar.component';
 import { FooterComponent } from './modules/layout/components/footer/footer.component';
 import { NavbarComponent } from './modules/layout/components/navbar/navbar.component';
@@ -24,7 +22,6 @@ import { SidebarMenuComponent } from './modules/layout/components/sidebar/sideba
 import { SidebarSubmenuComponent } from './modules/layout/components/sidebar/sidebar-submenu/sidebar-submenu.component';
 import { NavbarMenuComponent } from './modules/layout/components/navbar/navbar-menu/navbar-menu.component';
 import { NavbarMobileComponent } from './modules/layout/components/navbar/navbar-mobile/navbar-mobile.component';
-import { NavbarSubmenuComponent } from './modules/layout/components/navbar/navbar-submenu/navbar-submenu.component';
 import { ProfileMenuComponent } from './modules/layout/components/navbar/profile-menu/profile-menu.component';
 import { Error404Component } from './modules/error/pages/error404/error404.component';
 import { Error500Component } from './modules/error/pages/error500/error500.component';
@@ -70,7 +67,6 @@ import { TwoStepsComponent } from './modules/auth/pages/two-steps/two-steps.comp
     SidebarSubmenuComponent,
     NavbarMenuComponent,
     NavbarMobileComponent,
-    NavbarSubmenuComponent,
     ProfileMenuComponent,
     Error404Component,
     Error500Component,
@@ -99,7 +95,6 @@ import { TwoStepsComponent } from './modules/auth/pages/two-steps/two-steps.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularSvgIconModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
