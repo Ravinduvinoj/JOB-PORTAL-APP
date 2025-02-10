@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SubMenuItem } from '../../../../../core/models/menu.model';
 import { MenuService } from '../../../services/menu.service';
 
@@ -7,7 +7,7 @@ import { MenuService } from '../../../services/menu.service';
   templateUrl: './sidebar-menu.component.html',
   styleUrl: './sidebar-menu.component.css'
 })
-export class SidebarMenuComponent {
+export class SidebarMenuComponent implements OnInit{
   constructor(public menuService: MenuService) {}
 
   public toggleMenu(subMenu: SubMenuItem) {

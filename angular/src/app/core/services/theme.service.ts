@@ -1,7 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Theme } from '../models/theme.model';
 import { effect } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,7 @@ export class ThemeService {
     });
   }
 
-  private isLocalStorageAvailable(): boolean {
+   isLocalStorageAvailable(): boolean {
     try {
       return typeof localStorage !== 'undefined';
     } catch {
@@ -24,7 +23,7 @@ export class ThemeService {
     }
   }
 
-  loadTheme() {
+  private loadTheme() {
     if (this.isLocalStorageAvailable()) {
       const theme = localStorage.getItem('theme');
       if (theme) {
@@ -33,7 +32,7 @@ export class ThemeService {
     }
   }
 
-  setTheme() {
+  private setTheme() {
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('theme', JSON.stringify(this.theme()));
     }
@@ -44,13 +43,11 @@ export class ThemeService {
     return this.theme().mode === 'dark';
   }
 
-  setThemeClass() {
-    if (isPlatformBrowser(this.platformId)) {
-      const htmlElement = document.querySelector('html');
-      if (htmlElement) {
-        htmlElement.className = this.theme().mode;
-        htmlElement.setAttribute('data-theme', this.theme().color);
-      }
+  private setThemeClass() {
+    if (typeof window !== 'undefined' && document) {
+      document.querySelector('html')!.className = this.theme().mode;
+      document.querySelector('html')!.setAttribute('data-theme', this.theme().color);
     }
   }
+  
 }
