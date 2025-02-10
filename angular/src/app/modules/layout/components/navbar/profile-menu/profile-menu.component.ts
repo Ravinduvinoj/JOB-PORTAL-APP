@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../../../../core/services/theme.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-profile-menu',
@@ -14,7 +20,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
           opacity: 1,
           transform: 'translateY(0)',
           visibility: 'visible',
-        }),
+        })
       ),
       state(
         'closed',
@@ -22,18 +28,18 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
           opacity: 0,
           transform: 'translateY(-20px)',
           visibility: 'hidden',
-        }),
+        })
       ),
       transition('open => closed', [animate('0.2s')]),
       transition('closed => open', [animate('0.2s')]),
     ]),
   ],
 })
-export class ProfileMenuComponent {
+export class ProfileMenuComponent implements OnInit {
   public isOpen = false;
   public profileMenu = [
     {
-      title: 'Profile',
+      title: 'Your Profile',
       icon: './assets/icons/heroicons/outline/user-circle.svg',
       link: '/profile',
     },
@@ -86,13 +92,13 @@ export class ProfileMenuComponent {
 
   ngOnInit(): void {}
 
-  toggleMenu() {
+  public toggleMenu(): void {
     this.isOpen = !this.isOpen;
   }
 
   toggleThemeMode() {
     this.themeService.theme.update((theme) => {
-      const mode = !this.themeService.isDark ? 'dark' : 'light';
+      const mode = theme.mode === 'light' ? 'dark' : 'light';
       return { ...theme, mode: mode };
     });
   }

@@ -17,7 +17,7 @@
   <!-- Dropdown -->
   <div
     [@openClose]="isOpen ? 'open' : 'closed'"
-    class="absolute bg-gray-600 right-0 z-20 mt-2 w-60 origin-top-right transform rounded-md bg-background py-4 shadow-custom ring-1 ring-transparent ring-opacity-5 transition focus:outline-none"
+    class="absolute bgcolor right-0 z-20 mt-2 w-60 origin-top-right transform rounded-md bg-background py-4 shadow-custom ring-1 ring-transparent ring-opacity-5 transition focus:outline-none"
   >
     <div class="flext-row flex items-center px-4 pb-4">
       <div class="w-10 shrink-0">
@@ -63,16 +63,11 @@
         <div
           :key="$index"
           (click)="toggleThemeColor(item.name)"
-          [ngClass]="{
-            'border-muted-foreground bg-card':
-              item.name == themeService.theme().color
-          }"
-          class="focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center justify-start whitespace-nowrap rounded-md border border-border bg-background px-3 text-xs font-medium text-muted-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 hover:bg-card hover:text-foreground"
-        >
+          [ngClass]="{ 'border-muted-foreground bg-card': item.name == themeService.theme().color }"
+          class="focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center justify-start whitespace-nowrap rounded-md border border-border bg-background px-3 text-xs font-medium text-muted-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 hover:bg-card hover:text-foreground">
           <span
             [style.backgroundColor]="item.code"
-            class="mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-rose-500"
-          ></span>
+            class="mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-rose-500"></span>
           <p class="capitalize">{{ item.name }}</p>
         </div>
         }
@@ -85,11 +80,8 @@
         <div
           :key="$index"
           (click)="toggleThemeMode()"
-          [ngClass]="{
-            'border-muted-foreground bg-card': item == themeService.theme().mode
-          }"
-          class="focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center justify-start whitespace-nowrap rounded-md border border-border bg-background px-3 text-xs font-medium text-muted-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 hover:bg-card hover:text-foreground"
-        >
+          [ngClass]="{ 'border-muted-foreground bg-card': item == themeService.theme().mode }"
+          class="focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center justify-start whitespace-nowrap rounded-md border border-border bg-background px-3 text-xs font-medium text-muted-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 hover:bg-card hover:text-foreground">
           <img
             [src]="
               item == 'light'

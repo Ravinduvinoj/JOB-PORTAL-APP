@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, Router, Event} from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { NavigationEnd, Router, Event} from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit{
   private mainContent: HTMLElement | null = null;
 
   constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: object) {
