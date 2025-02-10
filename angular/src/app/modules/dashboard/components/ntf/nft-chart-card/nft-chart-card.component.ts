@@ -18,6 +18,7 @@ import { ThemeService } from '../../../../../core/services/theme.service';
 export class NftChartCardComponent implements OnInit, OnDestroy {
   public chartOptions: Partial<ChartOptions>;
   private isBrowser: boolean | undefined;
+  primaryColor="";
 
   constructor(
     private themeService: ThemeService,
@@ -52,6 +53,7 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
       const bodyStyles = getComputedStyle(document.body);
       baseColor = bodyStyles.getPropertyValue('--primary-color') || baseColor;
     }
+   
 
     this.chartOptions = {
       series: [{ name: 'Etherium', data: data }],
@@ -112,18 +114,20 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       effect(() => {
         /** change chart theme */
-        let primaryColor = getComputedStyle(
+        this.primaryColor = getComputedStyle(
           document.documentElement
         ).getPropertyValue('--primary');
-        primaryColor = this.HSLToHex(primaryColor);
+        this.primaryColor = this.HSLToHex(this.primaryColor);
         this.chartOptions.tooltip = {
           theme: this.themeService.theme().mode,
         };
-        this.chartOptions.colors = [primaryColor];
-        this.chartOptions.stroke!.colors = [primaryColor];
-        this.chartOptions.xaxis!.crosshairs!.stroke!.color = primaryColor;
+        console.log(this.primaryColor)
+        this.chartOptions.colors = [this.primaryColor];
+        this.chartOptions.stroke!.colors = [this.primaryColor];
+        this.chartOptions.xaxis!.crosshairs!.stroke!.color = this.primaryColor;
       });
     }
+    
   }
 
   private HSLToHex(color: string): string {
@@ -148,10 +152,13 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
         .toString(16)
         .padStart(2, '0');
     };
+    
     return `#${f(0)}${f(8)}${f(4)}`;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngOnDestroy(): void {}
 }

@@ -7,6 +7,7 @@ import {
   HttpClientModule,
   provideHttpClient,
   withFetch,
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,11 +46,14 @@ import { CategoryComponent } from './modules/dashboard/common/job/category/categ
 import { JobComponent } from './modules/dashboard/common/job/job.component';
 import { PositionComponent } from './modules/dashboard/common/job/position/position.component';
 import { SigninComponent } from './modules/auth/pages/sign-in/sign-in.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { SignUpComponent } from './modules/auth/pages/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './modules/auth/pages/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './modules/auth/pages/new-password/new-password.component';
 import { TwoStepsComponent } from './modules/auth/pages/two-steps/two-steps.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { RouterLink } from '@angular/router';
+import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -99,9 +103,13 @@ import { TwoStepsComponent } from './modules/auth/pages/two-steps/two-steps.comp
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    NgApexchartsModule,
+    RouterLink,
+    ClickOutsideDirective,
+    NgClass,
   ],
-  providers: [provideClientHydration(), provideHttpClient(withFetch())],
+  providers: [provideClientHydration(), provideHttpClient(withFetch()),provideHttpClient(withInterceptorsFromDi())],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })

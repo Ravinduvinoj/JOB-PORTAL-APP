@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, input, OnInit, Output } from '@angular/core';
 import { cx } from '../../utils/ckassnames';
 type ButtonProps = {
   impact: 'bold' | 'light' | 'none';
@@ -11,9 +11,9 @@ type ButtonProps = {
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrl: './button.component.css'
+  styleUrl: './button.component.css',
 })
-export class ButtonComponent {
+export class ButtonComponent implements OnInit {
   impact = input<ButtonProps['impact']>('none');
   size = input<ButtonProps['size']>('medium');
   shape = input<ButtonProps['shape']>('rounded');
@@ -99,4 +99,3 @@ export class ButtonComponent {
     this.buttonClick.emit();
   }
 }
-
