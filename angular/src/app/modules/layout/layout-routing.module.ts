@@ -19,11 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('../uikit/uikit.module').then((m) => m.UikitModule),
   },
   { path: '', redirectTo: 'company', pathMatch: 'full' },
-  { path: '**', redirectTo: 'error/404' },
+  { path: '**', redirectTo: '/error/404' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LayoutRoutingModule { }
+export class LayoutRoutingModule {}
