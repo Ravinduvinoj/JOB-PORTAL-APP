@@ -15,12 +15,12 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: NftComponent },
-      { path: 'advertiesment', component: AdvertiesmentComponent },
+      { path: 'advertisement', component: AdvertiesmentComponent },
       { path: 'accounts/company', component: CompanyComponent },
       { path: 'accounts/users', component: UserComponent },
       { path: 'job/category', component: CategoryComponent },
       { path: 'job/position', component: PositionComponent },
-      { path: '**', redirectTo: 'errors/404' },
+      { path: '**', redirectTo: '/error/404' },
     ],
   },
 ];

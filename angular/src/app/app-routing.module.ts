@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './modules/auth/auth.component';
-import { ErrorComponent } from './modules/error/error.component';
 
 const routes: Routes = [
   {
@@ -9,18 +7,18 @@ const routes: Routes = [
     loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
   {
-    path: 'auth',component: AuthComponent,
+    path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'errors' , component: ErrorComponent,
+    path: 'errors',
     loadChildren: () => import('./modules/error/error.module').then((m) => m.ErrorModule),
   },
-  { path: '**', redirectTo: 'errors/404' },
+  { path: '**', redirectTo: 'errors/404', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

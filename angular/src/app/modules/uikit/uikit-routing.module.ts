@@ -8,15 +8,15 @@ const routes: Routes = [
     path: '',
     component: UikitComponent,
     children: [
-      { path: '', redirectTo: 'components', pathMatch: 'full' },
+      { path: '', redirectTo: 'table', pathMatch: 'full' },
       { path: 'table', component: TableComponent },
-      { path: '**', redirectTo: 'errors/404' },
+      { path: '**', redirectTo: '/error/404' },
     ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UikitRoutingModule { }
+export class UikitRoutingModule {}
