@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Nft } from '../../models/nft';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-nft',
@@ -9,7 +10,7 @@ import { Nft } from '../../models/nft';
 export class NftComponent implements OnInit{
   nft: Array<Nft>;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.nft = [
       {
         id: 34356771,
@@ -39,5 +40,10 @@ export class NftComponent implements OnInit{
     ];
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      // Your code that uses the window object
+      console.log(window.location.href);
+    }
+  }
 }
