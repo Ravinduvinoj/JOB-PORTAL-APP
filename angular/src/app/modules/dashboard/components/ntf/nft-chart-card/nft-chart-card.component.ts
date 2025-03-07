@@ -7,7 +7,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ChartOptions } from '../../../../../shared/models/chart-options';
+// import { ChartOptions } from '../../../../../shared/models/chart-options';
 import { ThemeService } from '../../../../../core/services/theme.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { ThemeService } from '../../../../../core/services/theme.service';
   styleUrl: './nft-chart-card.component.css',
 })
 export class NftChartCardComponent implements OnInit, OnDestroy {
-  public chartOptions: Partial<ChartOptions>;
+  // public chartOptions: Partial<ChartOptions>;
   private isBrowser: boolean | undefined;
   primaryColor="";
 
@@ -55,77 +55,77 @@ export class NftChartCardComponent implements OnInit, OnDestroy {
     }
    
 
-    this.chartOptions = {
-      series: [{ name: 'Etherium', data: data }],
-      chart: {
-        fontFamily: 'inherit',
-        type: 'area',
-        height: 150,
-        toolbar: { show: false },
-        sparkline: { enabled: true },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.4,
-          opacityTo: 0.2,
-          stops: [15, 120, 100],
-        },
-      },
-      stroke: {
-        curve: 'smooth',
-        show: true,
-        width: 3,
-        colors: [baseColor], // line color
-      },
-      xaxis: {
-        categories: categories,
-        labels: {
-          show: false,
-        },
-        crosshairs: {
-          position: 'front',
-          stroke: {
-            color: baseColor,
-            width: 1,
-            dashArray: 4,
-          },
-        },
-        tooltip: {
-          enabled: true,
-        },
-      },
-      tooltip: {
-        theme: 'light',
-        y: {
-          formatter: function (val: number) {
-            return val + '$';
-          },
-        },
-      },
-      colors: [baseColor], //line colors
-    };
+    // this.chartOptions = {
+    //   series: [{ name: 'Etherium', data: data }],
+    //   chart: {
+    //     fontFamily: 'inherit',
+    //     type: 'area',
+    //     height: 150,
+    //     toolbar: { show: false },
+    //     sparkline: { enabled: true },
+    //   },
+    //   dataLabels: {
+    //     enabled: false,
+    //   },
+    //   fill: {
+    //     type: 'gradient',
+    //     gradient: {
+    //       shadeIntensity: 1,
+    //       opacityFrom: 0.4,
+    //       opacityTo: 0.2,
+    //       stops: [15, 120, 100],
+    //     },
+    //   },
+    //   stroke: {
+    //     curve: 'smooth',
+    //     show: true,
+    //     width: 3,
+    //     colors: [baseColor], // line color
+    //   },
+    //   xaxis: {
+    //     categories: categories,
+    //     labels: {
+    //       show: false,
+    //     },
+    //     crosshairs: {
+    //       position: 'front',
+    //       stroke: {
+    //         color: baseColor,
+    //         width: 1,
+    //         dashArray: 4,
+    //       },
+    //     },
+    //     tooltip: {
+    //       enabled: true,
+    //     },
+    //   },
+    //   tooltip: {
+    //     theme: 'light',
+    //     y: {
+    //       formatter: function (val: number) {
+    //         return val + '$';
+    //       },
+    //     },
+    //   },
+    //   colors: [baseColor], //line colors
+    // };
 
     // Apply dynamic theme updates (browser-only)
     if (this.isBrowser) {
-      effect(() => {
-        /** change chart theme */
-        this.primaryColor = getComputedStyle(
-          document.documentElement
-        ).getPropertyValue('--primary');
-        this.primaryColor = this.HSLToHex(this.primaryColor);
-        this.chartOptions.tooltip = {
-          theme: this.themeService.theme().mode,
-        };
-        console.log(this.primaryColor)
-        this.chartOptions.colors = [this.primaryColor];
-        this.chartOptions.stroke!.colors = [this.primaryColor];
-        this.chartOptions.xaxis!.crosshairs!.stroke!.color = this.primaryColor;
-      });
+      // effect(() => {
+      //   /** change chart theme */
+      //   this.primaryColor = getComputedStyle(
+      //     document.documentElement
+      //   ).getPropertyValue('--primary');
+      //   this.primaryColor = this.HSLToHex(this.primaryColor);
+      //   this.chartOptions.tooltip = {
+      //     theme: this.themeService.theme().mode,
+      //   };
+      //   console.log(this.primaryColor)
+      //   this.chartOptions.colors = [this.primaryColor];
+      //   this.chartOptions.stroke!.colors = [this.primaryColor];
+      //   this.chartOptions.xaxis!.crosshairs!.stroke!.color = this.primaryColor;
+      // });
     }
     
   }

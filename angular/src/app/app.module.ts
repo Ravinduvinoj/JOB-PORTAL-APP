@@ -51,7 +51,7 @@ import { SignUpComponent } from './modules/auth/pages/sign-up/sign-up.component'
 import { ForgotPasswordComponent } from './modules/auth/pages/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './modules/auth/pages/new-password/new-password.component';
 import { TwoStepsComponent } from './modules/auth/pages/two-steps/two-steps.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
+// import { NgApexchartsModule } from 'ng-apexcharts';
 import { RouterLink } from '@angular/router';
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 
@@ -104,7 +104,7 @@ import { ClickOutsideDirective } from './shared/directives/click-outside.directi
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    NgApexchartsModule,
+    // NgApexchartsModule,
     RouterLink,
     ClickOutsideDirective,
     NgClass,
